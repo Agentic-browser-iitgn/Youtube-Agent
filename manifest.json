@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Agent",
+  "version": "1.0.0",
+  "description": "AI-powered YouTube automation agent that understands natural language commands",
+  "permissions": [
+    "identity", 
+    "storage", 
+    "tabs", 
+    "scripting",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://www.youtube.com/*",
+    "https://generativelanguage.googleapis.com/*",
+    "https://www.googleapis.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "YouTube Agent"
+  },
+  "oauth2": {
+    "client_id": "1000419117659-5rnen9v5geh286g5dkn0b0crorn8fk5k.apps.googleusercontent.com",
+    "scopes": ["https://www.googleapis.com/auth/youtube.force-ssl"]
+  }
+}
